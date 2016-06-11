@@ -48,6 +48,6 @@ java -Xmx2048m -jar signing/signapk.jar -w signing/testkey.x509.pem signing/test
 rm -f $KERNEL_UNSIGNED
 signing/zipadjust $KERNEL_FALSE_SIGNED $KERNEL_ADJUSTED_UNSIGNED
 rm -f $KERNEL_FALSE_SIGNED
-java -Xmx2048m -jar signing/minsignapk.jar signing/testkey.x509.pem signing/testkey.pk8 $KERNEL_ADJUSTED_UNSIGNED RELEASE/$DEVICE/$KERNEL_NAME.zip
+java -Xmx2048m -jar signing/minsignapk.jar signing/testkey.x509.pem signing/testkey.pk8 $KERNEL_ADJUSTED_UNSIGNED RELEASE/$DEVICE/$KERNEL_NAME
 rm -f $KERNEL_ADJUSTED_UNSIGNED
 echo "M5 Kernel for $DEVICE Sucessfully Packed and Signed as $KERNEL_NAME"
