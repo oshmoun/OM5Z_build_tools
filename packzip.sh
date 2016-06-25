@@ -42,7 +42,9 @@ KERNEL_UNSIGNED=OM5Z-Kernel-V$VERSION-unsigned-$DEVICE.zip
 KERNEL_FALSE_SIGNED=OM5Z-Kernel-V$VERSION-false_signed-$DEVICE.zip
 KERNEL_ADJUSTED_UNSIGNED=OM5Z-Kernel-V$VERSION-adjusted_unsigned-$DEVICE.zip
 KERNEL_NAME=OM5Z-Kernel-V$VERSION-M-$DEVICE.zip
-zip -r $KERNEL_UNSIGNED zipme/*
+cd zipme
+zip -r ../$KERNEL_UNSIGNED .
+cd ..
 
 java -Xmx2048m -jar signing/signapk.jar -w signing/testkey.x509.pem signing/testkey.pk8 $KERNEL_UNSIGNED $KERNEL_FALSE_SIGNED
 rm -f $KERNEL_UNSIGNED
