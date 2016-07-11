@@ -6,7 +6,7 @@ DEVICE=$2
 
 # Add Devicecheck to updater-script
 case $DEVICE in
-  sumire)
+  sumire|sumire_dsds)
 cat <<EOT > zipme/META-INF/com/google/android/updater-script
 assert(getprop("ro.product.device") == "sumire" || getprop("ro.build.product") == "sumire" || getprop("ro.product.device") == "E6653" || getprop("ro.build.product") == "E6653" || getprop("ro.product.device") == "E6603" || getprop("ro.build.product") == "E6603" || getprop("ro.product.device") == "E6633" || getprop("ro.build.product") == "E6633" || getprop("ro.product.device") == "E6683" || getprop("ro.build.product") == "E6683" || abort("This package is for device: sumire, E6603, E6653, E6633, E6683; this device is " + getprop("ro.product.device") + "."););
 EOT
@@ -35,8 +35,6 @@ package_extract_file("OM5Z_boot.img", "/dev/block/bootdevice/by-name/boot");
 ui_print("Done!");
 show_progress(0.100000, 0);
 EOT2
-
-mkdir -p RELEASE/$DEVICE
 
 KERNEL_UNSIGNED=OM5Z-Kernel-V$VERSION-unsigned-$DEVICE.zip
 KERNEL_FALSE_SIGNED=OM5Z-Kernel-V$VERSION-false_signed-$DEVICE.zip
