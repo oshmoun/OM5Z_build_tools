@@ -6,6 +6,11 @@ DEVICE=$2
 
 # Add Devicecheck to updater-script
 case $DEVICE in
+  ivy|ivy_dsds)
+cat <<EOT > zipme/META-INF/com/google/android/updater-script
+assert(getprop("ro.product.device") == "ivy" || getprop("ro.build.product") == "ivy" || getprop("ro.product.device") == "E6553" || getprop("ro.build.product") == "E6553" || getprop("ro.product.device") == "E6533" || getprop("ro.build.product") == "E6533" || abort("This package is for device: ivy, E6553, E6533; this device is " + getprop("ro.product.device") + "."););
+EOT
+  ;;
   sumire|sumire_dsds)
 cat <<EOT > zipme/META-INF/com/google/android/updater-script
 assert(getprop("ro.product.device") == "sumire" || getprop("ro.build.product") == "sumire" || getprop("ro.product.device") == "E6653" || getprop("ro.build.product") == "E6653" || getprop("ro.product.device") == "E6603" || getprop("ro.build.product") == "E6603" || getprop("ro.product.device") == "E6633" || getprop("ro.build.product") == "E6633" || getprop("ro.product.device") == "E6683" || getprop("ro.build.product") == "E6683" || abort("This package is for device: sumire, E6603, E6653, E6633, E6683; this device is " + getprop("ro.product.device") + "."););
