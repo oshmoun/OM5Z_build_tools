@@ -1,0 +1,29 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+persist.sys.usb.config=mtp
+ro.sys.umsdirtyratio=5
+drm.service.enabled=true
+ro.secure=1
+ro.allow.mock.location=0
+ro.debuggable=0
+ro.zygote=zygote64_32
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+ro.dalvik.vm.native.bridge=0
+debug.atrace.tags.enableflags=0
+#
+# BOOTIMAGE_BUILD_PROPERTIES
+#
+ro.bootimage.build.date=Fri Jul 1 05:27:24 JST 2016
+ro.bootimage.build.date.utc=1467318444
+ro.bootimage.build.fingerprint=Sony/ivy/ivy:6.0.1/KITAKAMI-2.1.2-160630-1944/1:user/dev-keys
+#
+# VERSION_PROPERTIES
+#
+ro.semc.version.sw=1292-0963
+ro.semc.version.sw_revision=32.2.A.0.253
+ro.semc.version.sw_variant=GLOBAL-LTECA
+ro.semc.version.sw_type=user
