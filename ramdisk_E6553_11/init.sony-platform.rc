@@ -9,8 +9,9 @@ on early-init
     write /sys/module/msm_performance/parameters/managed_cpus "0-3"
     write /sys/module/msm_performance/parameters/managed_cpus "4-7"
     write /sys/module/msm_performance/parameters/max_cpus "-1:0"
-
+    write /sys/module/msm_performance/parameters/max_cpu_freq "0:1344000 1:1344000 2:1344000 3:1344000 4:1536000 5:1536000 6:1536000 7:1536000"
     
+
 
 on init
     # SONY: Start the TrimArea Daemon. It must be started before fota-ua
@@ -242,6 +243,7 @@ on early-boot
 on boot
     # SONY: Enable Sony RIC
     mount securityfs securityfs /sys/kernel/security nosuid nodev noexec
+    write /sys/kernel/security/sony_ric/enable 0
 
     # SONY: Native dumper via corepattern
     write /proc/sys/kernel/core_pattern "|/system/bin/nativedumper -c %p %e %s %t"
@@ -444,11 +446,11 @@ on property:init.svc.fuse_sdcard1=running
    write /sys/class/block/mmcblk1/bdi/max_ratio 1
 
 # Start RIC
-service ric /sbin/ric
-    user root
-    group root drmrpc trimarea system
-    class main
-    seclabel u:r:ric:s0
+#service ric /sbin/ric
+#    user root
+#    group root drmrpc trimarea system
+#    class main
+#    seclabel u:r:ric:s0
 
 
 

@@ -224,6 +224,7 @@ on firmware_mounts_complete
 on late-init
     trigger early-fs
     trigger fs
+    trigger vendor-ovl
     trigger post-fs
 
     # Load properties from /system/ + /factory after fs mount. Place
@@ -773,3 +774,7 @@ service logcatd /system/bin/logcat -b all -v threadtime -v usec -v printable -D 
     user logd
     group log
     writepid /dev/cpuset/system-background/tasks
+
+on vendor-ovl
+    exec u:r:init:s0 -- /system/bin/sh /init.vendor_ovl.sh /vendor
+    restorecon_recursive /vendor
